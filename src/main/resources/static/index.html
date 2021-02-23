@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排序可视化</title>
+    <link rel="stylesheet" href="/plugins/vuesax/css/vuesax.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <vs-row class="page-row">
+            <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="1">
+                <vs-select
+                        label-placeholder="类型"
+                        v-model="type"
+                >
+                    <vs-option v-for="(item, index) in types" :key="index" :label="item.label" :value="item.value">
+                        {{item.label}}
+                    </vs-option>
+                </vs-select>
+            </vs-col>
+            <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="1" class="center content-inputs">
+                <vs-input
+                        style="width: 100%;"
+                        label-placeholder="数组长度"
+                        v-model.number="len"
+                />
+            </vs-col>
+            <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="1" class="center content-inputs">
+                <vs-input
+                        style="width: 100%;"
+                        label-placeholder="取值范围（最小）"
+                        v-model="min"
+                />
+            </vs-col>
+            <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="1" class="center content-inputs">
+                <vs-input
+                        style="width: 100%;"
+                        label-placeholder="取值范围（最大）"
+                        v-model="max"
+                />
+            </vs-col>
+            <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="1">
+                <div class="button-box">
+                    <vs-button
+                            @click="buildArr"
+                    >
+                        生成
+                    </vs-button>
+                    <vs-button
+                            @click="startSort"
+                    >
+                        开始排序
+                    </vs-button>
+                </div>
+
+            </vs-col>
+        </vs-row>
+        <vs-row class="page-row">
+            <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="12">
+                <div ref="charts" style="width: 100%; height: 500px;">
+
+                </div>
+            </vs-col>
+        </vs-row>
+    </div>
+</body>
+<script language="JavaScript" src="/plugins/vue/vue.js"></script>
+<script src="/plugins/echarts/echarts.js"></script>
+<script language="JavaScript" src="/plugins/axios/axios.min.js"></script>
+<script language="JavaScript" src="/plugins/vuesax/js/vuesax.min.js"></script>
+<script language="JavaScript" src="/plugins/ext/object.js"></script>
+<script language="JavaScript" src="/plugins/ext/array.js"></script>
+<script language="JavaScript" src="js.js"></script>
+</html>
